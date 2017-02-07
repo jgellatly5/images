@@ -1,22 +1,20 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
-
+// Any JS in here is automatically run for us
 import './main.html';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+// import the React library
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+// create a component
+const App = () => {
+	return (
+		<div>
+			React App #2
+		</div>
+	);
+};
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+// Render this component to the screen
+Meteor.startup(() => {
+	ReactDOM.render(<App />, document.querySelector('.container'));
 });
