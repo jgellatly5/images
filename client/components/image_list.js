@@ -11,9 +11,12 @@ const IMAGES = [
 
 // create our component
 const ImageList = () => {
+	const RenderedImages = IMAGES.map(function(image) {
+		return <ImageDetail image={image}/>
+	});
 	return (
-		<ul>
-			<ImageDetail />
+		<ul className="media-list list-group">
+			{RenderedImages}
 		</ul>
 	);
 };
